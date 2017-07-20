@@ -10,7 +10,7 @@ Amazon ECS Getting Started Workshop
 3. Select **Amazon Linux** and then click **Create**
 4. Connect to the Lightsail instance
 5. `sudo yum update -y` to update all installed packages
-6. `sudo yum install docker -y` to install dockder
+6. `sudo yum install docker git -y` to install dockder and git client
 7. `sudo service docker start` to start the docker daemon
 
 
@@ -31,10 +31,12 @@ Amazon ECS Getting Started Workshop
 
 ## Build your own Dockerfile
 
-1. prepare your `Dockerfile`
-2. `sudo docker build -t mycaddy .` to build your own `mycaddy:latest `docker image
-3. run your own docker image with `sudo docker run -d -p 80:2015 mycaddy`
-4. reload the browser to see the changes
+1. `git clone https://github.com/pahud/ecs-getting-started-workshop.git ecs-workshop` to clone this repo to local 
+2. `cd ecs-workshop`
+3. view your `Dockerfile`
+4. `sudo docker build -t mycaddy .` to build your own `mycaddy:latest `docker image
+5. run your own docker image with `sudo docker run -d -p 80:2015 mycaddy`
+6. reload the browser to see the changes
 
 
 
@@ -87,9 +89,9 @@ Amazon ECS Getting Started Workshop
 
 2. list the repo again `aws ecr describe-repositories`  and you should be able to see the new created repo
 
-3. run `$(aws ecr get-login) ` to evaluate the docker login credentials
+3. run `sudo $(aws ecr get-login) ` to evaluate the docker login credentials
 
-4.  tag your docker image 
+4. tag your docker image 
 
    ```
    $ sudo docker tag mycaddy:latest 903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy:lates
@@ -109,7 +111,7 @@ Amazon ECS Getting Started Workshop
 
 
 
-# Clean Ups
+# Clean Up
 
 1. delete the Lightsail instance
 2. delete the IAM user **ecs-builder** created in this workshop
