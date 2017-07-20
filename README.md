@@ -29,7 +29,88 @@ Amazon ECS Getting Started Workshop
 
 
 
+## Build your own Dockerfile
+
+1. prepare your `Dockerfile`
+2. `sudo docker build -t mycaddy .` to build your own `mycaddy:latest `docker image
+3. run your own docker image with `sudo docker run -d -p 80:2015 mycaddy`
+4. reload the browser to see the changes
 
 
 
+## Create a new IAM User
+
+1. go to IAM console 
+
+2. Create a IAM user "**ecs-builder**" with **Programmatic access**
+
+3. select Attach **existing policies directly**
+
+4. select **AmazonEC2ContainerRegistryFullAccess**
+
+5. **Next Review**
+
+6. **Create User**
+
+7. click **Show** under **Secret access key**
+
+8. go to Lightsail shell, run `aws configure` to configure the **Access key ID** and **Secret access key**
+
+   ```
+   [ec2-user@ip-172-26-6-78 ~]$ aws configure
+   AWS Access Key ID [None]: XXXXXXXXXXXXXXX
+   AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXXXX
+   Default region name [None]: ap-northeast-1
+   Default output format [None]: 
+   [ec2-user@ip-172-26-6-78 ~]$ 
+   ```
+
+9. run ` aws ecr describe-repositories` to see the existing list of repos on ECR (you may see an empty list)
+
+
+
+## prepare the ECR and push the Docker image
+
+1. create a new ECR repository `aws ecr create-repository --repository-name mycaddy`
+
+```
+{
+    "repository": {
+        "registryId": "903779448426", 
+        "repositoryName": "mycaddy", 
+        "repositoryArn": "arn:aws:ecr:ap-northeast-1:903779448426:repository/mycaddy", 
+        "createdAt": 1500591587.0, 
+        "repositoryUri": "903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy"
+    }
+}
+```
+
+2. list the repo again `aws ecr describe-repositories`  and you should be able to see the new created repo
+
+3. run `$(aws ecr get-login) ` to evaluate the docker login credentials
+
+4.  tag your docker image 
+
+   ```
+   $ sudo docker tag mycaddy:latest 903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy:lates
+   ```
+
+   ​
+
+5. push your docker image to ECR
+
+   ```
+   $ sudo docker push 903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy:latest
+   ```
+
+   ​
+
+
+
+
+
+# Clean Ups
+
+1. delete the Lightsail instance
+2. delete the IAM user **ecs-builder** created in this workshop
 
