@@ -94,7 +94,7 @@ Amazon ECS Getting Started Workshop
 4. tag your docker image 
 
    ```
-   $ sudo docker tag mycaddy:latest 903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy:lates
+   $ sudo docker tag mycaddy:latest 903779448426.dkr.ecr.ap-northeast-1.amazonaws.com/mycaddy:latest
    ```
 
    ​
