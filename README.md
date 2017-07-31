@@ -13,7 +13,7 @@ Amazon ECS Getting Started Workshop
 
 *or optionally you can launch a EC2 instance by click the button below:*
 
-[![cloudformation-launch-stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=ecs-refarch&templateURL=https://s3-us-west-2.amazonaws.com/pahud-cfn-us-west-2/ecs-getting-started-workshop/cloudformation/infra.yml)
+[![cloudformation-launch-stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=ecs-docker&templateURL=https://s3-us-west-2.amazonaws.com/pahud-cfn-us-west-2/ecs-getting-started-workshop/cloudformation/infra.yml)
 
 5. `sudo yum update -y` to update all installed packages
 6. `sudo yum install docker git awscli -y` to install dockder and git client
